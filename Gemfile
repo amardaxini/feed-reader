@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 require 'rubygems'
 require 'mongo'
 gem 'rails', '3.0.3'
-#gem 'cream','~> 0.5.5' 
+
 
 gem "mongrel"
 #gem 'mm-devise'
@@ -10,9 +10,7 @@ gem "mongrel"
 gem "mongoid", "2.0.0.rc.7"
 gem "devise"
 gem "bson_ext"
-gem "wirble"
 gem "feedzirra"
-gem "ruby-debug"
 gem "will_paginate","3.0.pre2"
 gem 'whenever', :require => false
 # Bundle edge Rails instead:

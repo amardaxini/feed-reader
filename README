@@ -1,0 +1,13 @@
+Demo application for mongodb and mongoid
+
+    user has many feeds,feed has many user
+
+    user can add their own feed,and letter on feed is parsed and content is stored on mongodb
+
+TODO
+
+ Need to add some background job so it works on background,
+ Need to set cron job for periodically fetching feed updates
+ Sending Email to user periodically,
+ Mail can be feed link or content,
+ already added db field need some configuration 

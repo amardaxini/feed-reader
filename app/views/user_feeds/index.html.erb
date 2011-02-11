@@ -1,0 +1,30 @@
+<h2> Feeds</h2>
+
+<div class="add_feed" style="margin:10px;padding:10px;">
+  <% form_tag(@user_feed)  do |f| %>
+      Feed Url <%= text_field_tag "user_feed[feed_url]","",:size=>40 %>
+      <%= submit_tag "Add feed" %>
+  <% end %>
+</div>
+<%= will_paginate @user_feeds %>
+<table class="listing">
+  <thead>
+  <tr>
+    <th>Url</th>
+    <th> Send Email as</th>
+    <th width="30"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @user_feeds.each do |feed| %>
+      <tr>
+        <td><%=link_to feed.feed_url,user_feed_path(feed) %></td>
+        <td><%= feed.status %></td>    
+        <td>
+            <%= link_to "delete",user_feed_path(feed),:method=>'delete' %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+

@@ -1,0 +1,5 @@
+development:
+  adapter: mongodb
+  database: feed-reader_development
+  host: localhost
+  port: 27017

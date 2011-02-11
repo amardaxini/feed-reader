@@ -1,0 +1,23 @@
+<% content_for :sidebar do %>
+    <div class="back">
+      <a href="<%= user_feeds_path %>" class="button">&larr; Back to feed</a>
+      
+    </div>
+<% end  %>
+<% unless @feed.blank? %>
+    <%=will_paginate @feed_items %>
+    <h3><%= @feed.title %><span style="margin-left:10px;font-size:17px;color:#acacac">(<%= @feed.url %>)</span> </h3>
+    <% @feed_items.each do |feed_item| %>
+        <div class="entry" id="<%= feed_item.title%>">
+          <hr class="separator" />
+          <h5><%= feed_item.title %></h5>
+          <span class="entry-content"><%= feed_item.content.html_safe %></span>
+        </div>
+        <% content_for :sidebar do %>
+            <div class="article-link">
+              <%=link_to feed_item.title,"##{feed_item.title}" %>
+            </div>
+        <% end %>
+    <% end %>
+
+<% end  %>

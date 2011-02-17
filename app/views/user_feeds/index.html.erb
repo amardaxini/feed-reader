@@ -27,4 +27,11 @@
   <% end %>
   </tbody>
 </table>
+<% content_for :sidebar do %>
+    <% unless @user_feeds.blank? %>
+        <div>
+          <a href="<%= fetch_all_feeds_items_of_user_user_feeds_path %>" class="button">Fetch All Feed Items</a>
+        </div>
+    <% end %>
+<% end  %>
 

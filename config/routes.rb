@@ -1,6 +1,13 @@
 FeedReader::Application.routes.draw do
 
-  resources :user_feeds
+  resources :user_feeds do
+    member do
+      get 'fetch_recent_feed_items'
+    end
+    collection do
+      get 'fetch_all_feeds_items_of_user'
+    end
+  end
   root :to => 'home#index'
   devise_for :users
 

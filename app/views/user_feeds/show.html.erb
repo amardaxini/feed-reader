@@ -1,8 +1,12 @@
 <% content_for :sidebar do %>
     <div class="back">
       <a href="<%= user_feeds_path %>" class="button">&larr; Back to feed</a>
-      
     </div>
+    <% unless @feed.blank? %>
+        <div>
+          <a href="<%= fetch_recent_feed_items_user_feed_path(@user_feed) %>" class="button">Fetch Feed Item</a>
+        </div>
+    <% end %>
 <% end  %>
 <% unless @feed.blank? %>
     <%=will_paginate @feed_items %>

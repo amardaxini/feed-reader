@@ -17,9 +17,9 @@ class Feed
     Feed.find_or_create_by(:feed_url=>feed_url)
   end
 
-  after_create :add_initial_feed_items
+  after_create :add_feed_items
 
-  def add_initial_feed_items
+  def add_feed_items
     feed =Feedzirra::Feed.fetch_and_parse(self.feed_url,
                                           :on_success => Proc.new do |url,feed|
                                             self.update_attributes(:title=>feed.title,:etag=>feed.etag,:last_modified=>feed.last_modified,:url=>feed.url)
@@ -34,8 +34,10 @@ class Feed
 #    end
   end
 #
-  def self.update_feeds
-    feeds = Feed.all.collect{|f| unless f.users.blank?;f.feed_url;end}.flatten.compact
+  def self.update_feeds(feeds=nil)
+    if feeds.blank?
+      feeds = Feed.all.collect{|f| unless f.users.blank?;f.feed_url;end}.flatten.compact
+    end
     update_feed = Feedzirra::Feed.fetch_and_parse(feeds,
                                                   :on_success => Proc.new do |url,feed|
                                                     feed_obj = Feed.find(:first,:conditions=>{:feed_url=>url})

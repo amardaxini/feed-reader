@@ -42,7 +42,19 @@ class UserFeedsController < ApplicationController
     @user_feed= current_user.user_feeds.find(params[:id])
     @feed = @user_feed.feed
     @feed_items = @feed.feed_items.order_by(:published.desc).paginate(:page=>params[:page],:per_page=>10)
+  end
 
+  def fetch_recent_feed_items
+    @user_feed= current_user.user_feeds.find(params[:id])
+    @feed = @user_feed.feed
+    @feed.add_feed_items
+    redirect_to user_feed_path(@user_feed)
+  end
+
+  def fetch_all_feeds_items_of_user
+    @user_feeds = current_user.user_feeds
+    Feed.update_feeds(@user_feeds.collect{|f| f.feed.feed_url}.flatten.compact.uniq)
+    redirect_to user_feeds_path
   end
 
 end

@@ -182,6 +182,10 @@ table.listing td span { word-wrap: break-word; display: inline; }
 .separator{
     border: none; border-bottom: 2px dotted #666;margin-bottom: 1em;
 }
+.feed-item-url a{
+    text-decoration:none;
+    color:black;
+}
 /* sidebar*/
 .article-link{
     margin:10px 5px;

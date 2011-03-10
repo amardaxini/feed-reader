@@ -16,8 +16,8 @@ test:
 
 # set these environment variables on your prod server
 production:
-  host: mongohq.com
+  host: flame.mongohq.com
   port: 27017
   username: amardaxini
   password: thakkar!
-  database: feed-reader_development
+  database: feed-reader

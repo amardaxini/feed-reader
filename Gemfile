@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 require 'rubygems'
 require 'mongo'
 gem 'rails', '3.0.3'
+gem 'mongo'
 
 
 gem "mongrel"
@@ -39,5 +40,5 @@ gem 'whenever', :require => false
 # and rake tasks are available in development mode:
 group :development do
 #   gem 'webrat'
-gem "ruby-debug"
+#gem "ruby-debug"
 end

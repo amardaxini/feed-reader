@@ -11,3 +11,6 @@
 #    MongoMapper.connection.connect if forked
 #  end
 #end
+
+require 'rubygems'
+require 'mongo'

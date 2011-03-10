@@ -1,6 +1,5 @@
 source 'http://rubygems.org'
-require 'rubygems'
-require 'mongo'
+
 gem 'rails', '3.0.3'
 gem 'mongo'
 

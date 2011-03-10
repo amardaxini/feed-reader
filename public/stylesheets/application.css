@@ -179,7 +179,7 @@ table.listing td span { word-wrap: break-word; display: inline; }
 .entry-content{
     margin:10px;
 }
-.separator{
+  .separator{
     border: none; border-bottom: 2px dotted #666;margin-bottom: 1em;
 }
 .feed-item-url a{

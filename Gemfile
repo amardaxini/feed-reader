@@ -13,6 +13,10 @@ gem "bson_ext"
 gem "feedzirra"
 gem "will_paginate","3.0.pre2"
 gem 'whenever', :require => false
+gem 'resque'
+gem 'SystemTimer'
+gem 'redis'
+gem 'heroku'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

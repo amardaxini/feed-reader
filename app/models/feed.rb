@@ -35,6 +35,7 @@ class Feed
   end
 #
   def self.update_feeds(feeds=nil)
+
     if feeds.blank?
       feeds = Feed.all.collect{|f| unless f.users.blank?;f.feed_url;end}.flatten.compact
     end
@@ -64,4 +65,9 @@ class Feed
                                                   end,
                                                   :on_failure => lambda {|url, response_code, response_header, response_body| puts response_code })
   end
+
+	def self.update_in_background(feeds="")
+    # Feed.update_feeds(feeds)
+		Resque.enqueue(FeedJob,feeds)
+	end
 end

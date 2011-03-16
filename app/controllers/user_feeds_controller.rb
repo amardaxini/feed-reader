@@ -1,3 +1,4 @@
+
 class UserFeedsController < ApplicationController
 
   def index
@@ -53,7 +54,9 @@ class UserFeedsController < ApplicationController
 
   def fetch_all_feeds_items_of_user
     @user_feeds = current_user.user_feeds
-    Feed.update_feeds(@user_feeds.collect{|f| f.feed.feed_url}.flatten.compact.uniq)
+
+    Feed.update_in_background(@user_feeds.collect{|f| f.feed.feed_url}.flatten.compact.uniq)
+#    Feed.update_feeds(@user_feeds.collect{|f| f.feed.feed_url}.flatten.compact.uniq)
     redirect_to user_feeds_path
   end
 

@@ -6,7 +6,7 @@ rails_root = ENV['RAILS_ROOT'] || File.dirname(__FILE__) + '/../..'
 rails_env = ENV['RAILS_ENV'] || 'development'
 
 resque_config = YAML.load_file(rails_root + '/config/resque.yml')
-ENV["REDISTOGO_URL"] ||= "redis://amardaxini:a525975ce8ad19dfb4cedda993d0b755@catfish.redistogo.com:9192"
+ENV["REDISTOGO_URL"] ||= "redis://username:password@host:port"
 
 uri = URI.parse(ENV["REDISTOGO_URL"])
 

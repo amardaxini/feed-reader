@@ -17,9 +17,14 @@ class Feed
     Feed.find_or_create_by(:feed_url=>feed_url)
   end
 
-  after_create :add_feed_items
+  after_create :add_feed_items_to_background
 
-  def add_feed_items
+	def add_feed_items_to_background
+		Resque.enqueue(FeedJob,"add_feed_items",self.id)
+	end
+
+	def add_feed_items
+
     feed =Feedzirra::Feed.fetch_and_parse(self.feed_url,
                                           :on_success => Proc.new do |url,feed|
                                             self.update_attributes(:title=>feed.title,:etag=>feed.etag,:last_modified=>feed.last_modified,:url=>feed.url)
@@ -68,6 +73,6 @@ class Feed
 
 	def self.update_in_background(feeds="")
     # Feed.update_feeds(feeds)
-		Resque.enqueue(FeedJob,feeds)
+		Resque.enqueue(FeedJob,"update_feeds",feeds)
 	end
 end

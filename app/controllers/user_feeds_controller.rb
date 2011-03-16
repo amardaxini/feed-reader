@@ -22,9 +22,6 @@ class UserFeedsController < ApplicationController
   end
 
 
-
-
-
   def destroy
     @user_feed= current_user.user_feeds.find(params[:id])
     @feed = @user_feed.feed
@@ -48,7 +45,8 @@ class UserFeedsController < ApplicationController
   def fetch_recent_feed_items
     @user_feed= current_user.user_feeds.find(params[:id])
     @feed = @user_feed.feed
-    @feed.add_feed_items
+    @feed.add_feed_items_to_background
+   # @feed.add_feed_items
     redirect_to user_feed_path(@user_feed)
   end
 

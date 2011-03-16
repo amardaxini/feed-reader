@@ -4,6 +4,9 @@ Demo application for mongodb and mongoid
 
     user can add their own feed,and letter on feed is parsed and content is stored on mongodb
 
+    Added background job
+    rake resque:work QUEUE=feed_serve
+
 TODO
 
  Need to add some background job so it works on background,

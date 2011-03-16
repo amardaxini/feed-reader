@@ -7,11 +7,8 @@ defaults: &defaults
   #     port: 27019
 
 development:
-  host: flame.mongohq.com
-  port: 27064
-  username: amardaxini
-  password: thakkar!
-  database: feed-reader
+  <<: *defaults
+  database: feed-reader_development
 
 test:
   <<: *defaults
@@ -19,8 +16,8 @@ test:
 
 # set these environment variables on your prod server
 production:
-  host: flame.mongohq.com
-  port: 
+  host: 
+  port:
   username: 
-  password: 
-  database: 
+  password:
+  database:

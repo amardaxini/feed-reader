@@ -15,7 +15,11 @@
         <div class="entry" id="<%= feed_item.title%>">
           <hr class="separator" />
           <h5 class="feed-item-url"><%=link_to feed_item.title,feed_item.url %></h5>
-          <span class="entry-content"><%= feed_item.content.html_safe %></span>
+          <span class="entry-content"><%= feed_item.content.try(:html_safe) %></span>
+          <% if feed_item.content.blank? %>
+          <span class="entry-content"><h3>Summary:-</h3>
+            <%= feed_item.summary.try(:html_safe) %></span>
+           <% end %>
         </div>
         <% content_for :sidebar do %>
             <div class="article-link">
